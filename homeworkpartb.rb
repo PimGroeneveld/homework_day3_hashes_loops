@@ -57,8 +57,8 @@ users = {
 p users["Jonathan"][:twitter]
 p users["Erik"][:home_town]
 p users["Erik"][:lottery_numbers]
-p users["Avril"][:pets][0]
-p users["Erik"][:lottery_numbers][2]
+p users["Avril"][:pets][0][:species] #can switch from strings to symbols, integers
+p users["Erik"][:lottery_numbers].min()
 
 avrillottery = users["Avril"][:lottery_numbers]
 avrillottery.each do |x|
@@ -67,19 +67,42 @@ avrillottery.each do |x|
   end
 end
 
-eriklottery = users["Erik"][:lottery_numbers]
+eriklottery = users["Erik"][:lottery_numbers] # << 7   would have been simpler
 eriklottery.push(7)
 p eriklottery
 
 users["Erik"][:home_town] = "Edinburgh"
 p users["Erik"][:home_town]
 
-
 # Did not manage to find a solution on how to add to the nested hash from a later point. Tried variations of the .push .insert .concat and a few other suggestions from stackoverflow but did not manage to get it right unfortunately. Would love to quickly go over this tomorrow
 #users.concat{:name => "Fluffy"} {:species => "dog"}
 # p users
 
+# solution -> create new hash with pets, then .push new hash onto old pets hash
+new_pet = {
+  name: "Fluffy",
+  species: "Dog"
+}
+users["Erik"][:pets].push(new_pet)
 
+p users["Erik"][:pets]
+
+#add the new hash info first, then set new_person to a persons name ["Ally"]
+new_person = {
+  twitter: "codeclan",
+  lottery_numbers: [1,3,4,5,6],
+  home_town: "Glasgow",
+  pets: [
+    {
+      name: "Doggo",
+      species: "cat",
+    }
+  ]
+}
+
+users["Ally"] = new_person
+
+p users
 
 # Get Jonathan's Twitter handle (i.e. the string "jonnyt")
 # Get Erik's hometown

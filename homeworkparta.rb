@@ -1,7 +1,7 @@
 stops = [ "Croy", "Cumbernauld", "Falkirk High", "Linlithgow", "Livingston", "Haymarket" ]
 
 stops << "Edinburgh Waverly"
-stops.unshift("Glasgow Queen St")
+stops.unshift("Glasgow Queen St") #.insert (0, glas.) would have worked as well
 stops.insert(4, "Polmont")
 stops.delete("Livingston")
 stops.delete_at(2)
@@ -12,8 +12,10 @@ p stops
 p "Linlithgow is stop number #{stops.index("Linlithgow")}!"
 p "There are #{stops.length} stops!"
 p stops[2]
-p stops.collect{"Falkirk High"}
-p stops.slice(2)
+# p stops.collect{"Falkirk High"}
+p stops.slice(2)  #slice takes a value out of the array
+p stops.fetch(2)
+p stops.at(2)
 
 stops.reverse!
 p stops
