@@ -25,7 +25,7 @@ united_kingdom.push(northern_ireland)
 p united_kingdom
 
 for country in united_kingdom
-  p "#{country[:name]}"
+  p "#{country[:name]}"   # #{} not needed
 end
 
 
